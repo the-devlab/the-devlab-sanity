@@ -6,14 +6,80 @@ export const main = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'heroHeading',
+      title: 'Hero Heading',
       type: 'string',
     }),
     defineField({
-      name: 'content',
-      title: 'Main Context',
+      name: 'heroContext',
+      title: 'Hero Context',
       type: 'text',
+    }),
+    defineField({
+      name: 'heroImage',
+      title: 'Hero Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
+      name: 'journeyHeading',
+      title: 'Journey Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'journeyContext',
+      title: 'Journey Context',
+      type: 'text',
+    }),
+    defineField({
+      name: 'toolkitHeading',
+      title: 'Toolkit Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'toolkitContext',
+      title: 'Toolkit Context',
+      type: 'text',
+    }),
+    defineField({
+      name: 'testimonialsHeading',
+      title: 'Testimonials Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonials',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+            }),
+            defineField({
+              name: 'quote',
+              title: 'Quote',
+              type: 'text',
+            }),
+            defineField({
+              name: 'avatar',
+              title: 'Avatar',
+              type: 'reference',
+              to: [{type: 'avatar'}],
+            }),
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: 'contactHeading',
+      title: 'Contact Heading',
+      type: 'string',
     }),
   ],
 })
