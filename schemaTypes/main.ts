@@ -1,4 +1,4 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export const main = defineType({
   name: 'main',
@@ -24,14 +24,41 @@ export const main = defineType({
       },
     }),
     defineField({
-      name: 'journeyHeading',
-      title: 'Journey Heading',
+      name: 'aboutHeading',
+      title: 'About Heading',
       type: 'string',
     }),
     defineField({
-      name: 'journeyContext',
-      title: 'Journey Context',
+      name: 'aboutContext',
+      title: 'About Context',
       type: 'text',
+    }),
+    defineField({
+      name: 'aboutHighlights',
+      title: 'About Highlights',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'body',
+              title: 'Body',
+              type: 'text',
+            }),
+            defineField({
+              name: 'icon',
+              title: 'Icon',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'toolkitHeading',
@@ -42,6 +69,37 @@ export const main = defineType({
       name: 'toolkitContext',
       title: 'Toolkit Context',
       type: 'text',
+    }),
+    defineField({
+      name: 'stack',
+      title: 'Stack',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'tags',
+              title: 'Tags',
+              type: 'array',
+              of: [{ type: 'string' }],
+              options: {
+                layout: 'tags',
+              },
+            }),
+            defineField({
+              name: 'icon',
+              title: 'Icon',
+              type: 'string',
+            }),
+          ],
+        },
+      ],
     }),
     defineField({
       name: 'testimonialsHeading',
@@ -70,7 +128,7 @@ export const main = defineType({
               name: 'avatar',
               title: 'Avatar',
               type: 'reference',
-              to: [{type: 'avatar'}],
+              to: [{ type: 'avatar' }],
             }),
           ],
         },
@@ -80,6 +138,22 @@ export const main = defineType({
       name: 'contactHeading',
       title: 'Contact Heading',
       type: 'string',
+    }),
+    defineField({
+      name: 'contactContext',
+      title: 'Contact Context',
+      type: 'text',
+    }),
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      type: 'string',
+      validation: (Rule) => Rule.email(),
+    }),
+    defineField({
+      name: 'contactLocation',
+      title: 'Contact Location',
+      type: 'text',
     }),
   ],
 })
