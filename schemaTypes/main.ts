@@ -6,6 +6,16 @@ export const main = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+    }),
+    defineField({
       name: 'heroHeading',
       title: 'Hero Heading',
       type: 'string',
@@ -22,6 +32,28 @@ export const main = defineType({
       options: {
         hotspot: true,
       },
+    }),
+    defineField({
+      name: 'heroButton',
+      title: 'Hero Button',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Label',
+          type: 'string',
+        }),
+        defineField({
+          name: 'link',
+          title: 'Link',
+          type: 'string',
+        }),
+        defineField({
+          name: 'icon',
+          title: 'Icon',
+          type: 'string',
+        }),
+      ],
     }),
     defineField({
       name: 'aboutHeading',
