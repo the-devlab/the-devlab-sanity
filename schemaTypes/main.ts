@@ -1,10 +1,32 @@
 import { defineField, defineType } from 'sanity'
 
+const languageNames: Record<string, string> = {
+  en: 'English',
+  bg: 'Bulgarian',
+}
+
 export const main = defineType({
   name: 'main',
   title: 'main',
   type: 'document',
+  preview: {
+    select: {
+      language: 'language',
+    },
+    prepare({ language }) {
+      return {
+        title: languageNames[language] || language,
+      }
+    },
+  },
   fields: [
+    defineField({
+      name: 'language',
+      title: 'Language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
     defineField({
       name: 'seoTitle',
       title: 'SEO Title',
